@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Статистика расходов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>История расходов</h1>
+    <table>
+        <tr>
+            <th>Дата</th>
+            <th>Сумма</th>
+            <th>Категория</th>
+        </tr>
+        {{ range .expenses }}
+        <tr>
+            <td>{{ .CreatedAt.Format "02.01.2006 15:04" }}</td>
+            <td>{{ .Amount }} руб.</td>
+            <td>{{ .Category }}</td>
+        </tr>
+        {{ end }}
+    </table>
+</body>
+
+</html>

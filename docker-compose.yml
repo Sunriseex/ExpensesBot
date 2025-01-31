@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: expense
+      POSTGRES_PASSWORD: securepass
+      POSTGRES_DB: expenses
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - expense-net
+
+  redis:
+    image: redis:7
+    volumes:
+      - redis_data:/data
+    networks:
+      - expense-net
+
+  bot:
+    build: .
+    environment:
+      TELEGRAM_TOKEN: ${TELEGRAM_TOKEN}
+      DATABASE_URL: postgres://expense:securepass@postgres:5432/expenses?sslmode=disable
+      REDIS_URL: redis:6379
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - expense-net
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  expense-net:
