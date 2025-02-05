@@ -49,7 +49,6 @@ docker-compose up --build
 ### Основные команды:
 - `/add <сумма> <категория>` – добавить трату (например, `/add 500 еда`)
 - `/list` – показать последние 10 трат
-- `/stats <week/month>` – статистика за период
 - `/stats_category <категория> [week/month]` – статистика по категории
 - `/top_categories` – топ категорий
 - `/export` – экспорт в CSV
@@ -57,6 +56,9 @@ docker-compose up --build
 - `/delete <id>` – удалить запись
 - `/clear_cache` – очистить кеш
 - `/help` – список команд
+
+## Веб-страница со статистикой
+- Доступна по адресу: `http://localhost:8080/stats/:user_id`
 
 ## Метрики Prometheus
 - Доступны по адресу: `http://localhost:8080/metrics`
@@ -67,13 +69,9 @@ docker-compose up --build
 ├── bot          # Основная логика бота
 ├── db           # Взаимодействие с PostgreSQL
 ├── cache        # Логика кеширования в Redis
-├── monitoring   # Настройка Prometheus
 ├── config       # Конфигурация окружения
 ├── web          # Веб-интерфейс статистики
-├── tests        # Тесты
+├── templates    # Шаблоны страниц
 ├── main.go      # Точка входа
 └── docker-compose.yml  # Конфигурация контейнеров
 ```
-
-## Лицензия
-Проект распространяется под лицензией MIT.
