@@ -6,16 +6,20 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/yourusername/expensesbot/db"
-	"github.com/yourusername/expensesbot/models"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/sunriseex/tgbot-money/db"
+	"github.com/sunriseex/tgbot-money/models"
 )
 
-// StartWebServer запускает веб-сервер
 func StartWebServer(port string) {
 	router := gin.Default()
+
+	// Загружаем HTML-шаблоны
 	router.LoadHTMLGlob("templates/*")
 
+	// Эндпоинты:
 	router.GET("/stats/:userID", statsHandler)
+	router.GET("/metrics", gin.WrapH(promhttp.Handler()))
 
 	if err := router.Run(":" + port); err != nil {
 		log.Fatalf("Не удалось запустить веб-сервер: %v", err)

@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/go-redis/redis/v8"
-	"github.com/sunriseex/tgboy-money/config"
+	"github.com/sunriseex/tgbot-money/config"
 )
 
 var (
@@ -17,7 +17,6 @@ var (
 func Init(conf config.Config) {
 	Client = redis.NewClient(&redis.Options{
 		Addr: conf.RedisURL,
-		// Если нужно, можно добавить аутентификацию и номер БД
 		Password: "",
 		DB:       0,
 	})

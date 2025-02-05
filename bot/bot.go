@@ -4,7 +4,7 @@ import (
 	"log"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"github.com/sunriseex/tgboy-money/config"
+	"github.com/sunriseex/tgbot-money/config"
 )
 
 var Bot *tgbotapi.BotAPI
