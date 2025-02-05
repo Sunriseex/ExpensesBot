@@ -36,7 +36,7 @@ Telegram-бот для учета расходов с поддержкой ко�
 TELEGRAM_BOT_TOKEN=your_bot_token
 DATABASE_URL=postgres://user:password@db:5432/expenses
 REDIS_URL=redis:6379
-CACHE_TTL=60
+WEB_PORT=8080
 ```
 
 ### Запуск с Docker Compose
